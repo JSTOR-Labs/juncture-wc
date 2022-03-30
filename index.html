@@ -419,8 +419,6 @@
       componentsList = clist
       componentsList.forEach(componentUrl => {
         let httpComponent = httpVueLoader(componentUrl)
-        console.log(httpComponent.resolved.options.name)
-        console.dir(httpComponent)
         let componentName = `${componentPrefix}${camelToKebab(componentUrl.split('/').pop().split('.')[0])}`
         if (availableViewers.indexOf(componentName) <0) {
           availableViewers.push(componentName)
