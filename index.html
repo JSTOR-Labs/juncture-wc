@@ -873,9 +873,11 @@
                 return { ...{ path: getDomPath(prior || tmp).filter(elem => elem !== 'html' && elem !== 'body').join('>') }, ...attrsToObject(paramEl) }
               })
               .map(paramObj => {
-                let viewerTag = Object.keys(paramObj).find(attr => !attr.value && this.availableViewers.indexOf(attr) >= 0)
+                let viewerTag = Object.keys(paramObj)
+                  .find(attr => !attr.value && this.availableViewers.indexOf(attr.replace(/ve-/, this.componentPrefix)) >= 0)
                 console.log(`viewerTag=${viewerTag}`)
-                if (viewerTag) paramObj.viewer = viewerTag
+
+                if (viewerTag) paramObj.viewer = viewerTag.replace(/ve-/, this.componentPrefix)
                 else if (!Object.keys(paramObj).find(attr => attr.indexOf('ve-') === 0)) paramObj['ve-entity'] = ''
                 return paramObj
               })
