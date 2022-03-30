@@ -874,7 +874,6 @@
               })
               .map(paramObj => {
                 let viewerTag = Object.keys(paramObj)
-                  .find(attr => !attr.value && this.availableViewers.indexOf(attr.replace(/ve-/, this.componentPrefix)) >= 0)
                 console.log(`viewerTag=${viewerTag}`)
 
                 if (viewerTag) paramObj.viewer = viewerTag.replace(/ve-/, this.componentPrefix)
@@ -885,6 +884,7 @@
                 if (!paramObj.id) paramObj.id = paramObj.eid || `P${++assignedId}`
                 return paramObj
               })
+            console.log(params)
 
             let entities = await this.getEntityData(this.findEntities(tmp, params))
             return [markdown, essay.innerHTML, params, entities]
