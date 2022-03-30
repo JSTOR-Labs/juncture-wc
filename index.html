@@ -305,7 +305,6 @@
           if (ghRepoInfo) {
             contentSource = {...contentSource, ...ghRepoInfo}
           }
-          console.log('ghp', contentSource)
         // Deployed in a non juncture-digital.org custom domain
         } else {
           contentSource = {acct: null, repo: null, ref: null, baseUrl: window.location.origin, basePath: '', isGhpSite: false}
@@ -420,7 +419,7 @@
       componentsList = clist
       componentsList.forEach(componentUrl => {
         let httpComponent = httpVueLoader(componentUrl)
-        let componentName = `${this.componentPrefix}${camelToKebab(componentUrl.split('/').pop().split('.')[0])}`
+        let componentName = `${componentPrefix}${camelToKebab(componentUrl.split('/').pop().split('.')[0])}`
         if (availableViewers.indexOf(componentName) <0) {
           availableViewers.push(componentName)
           Vue.component(componentName, httpComponent)
@@ -1393,7 +1392,6 @@
 
     // Gets site config
     async function getSiteConfig(contentSource) {
-      console.log('getSiteConfig.contentSource:', contentSource)
       let config = {}
       let configUrl = ENV === 'DEV'
         ?  contentSource.repo 
