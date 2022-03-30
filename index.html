@@ -298,13 +298,14 @@
         // GHP deploy mode
         if (window.location.hostname.indexOf('github.io') > 0) {
           let [acct, repo] = window.location.href.replace(/\.github\.io/,'').split('/').slice(2, 4)
-          let contentSource = {
+          contentSource = {
             acct, repo, ref: qargs.ref || 'main', basePath: `/${repo}`, isGhpSite: true, baseUrl: window.location.origin
           }
           let ghRepoInfo = await githubRepoInfo(acct, repo)
           if (ghRepoInfo) {
             contentSource = {...contentSource, ...ghRepoInfo}
           }
+          console.log('ghp', contentSource)
         // Deployed in a non juncture-digital.org custom domain
         } else {
           contentSource = {acct: null, repo: null, ref: null, baseUrl: window.location.origin, basePath: '', isGhpSite: false}
@@ -1392,6 +1393,7 @@
 
     // Gets site config
     async function getSiteConfig(contentSource) {
+      console.log('getSiteConfig.contentSource:', contentSource)
       let config = {}
       let configUrl = ENV === 'DEV'
         ?  contentSource.repo 
