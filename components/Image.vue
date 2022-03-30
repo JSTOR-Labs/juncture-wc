@@ -1,7 +1,7 @@
 <template>
   <div :style="containerStyle">
 
-    <vc-image src="wc:Boy_and_book_by_Charles_Porter.jpg"></vc-image>
+    <ve-image src="wc:Boy_and_book_by_Charles_Porter.jpg"></ve-image>
 
   </div>  
 </template>
@@ -9,7 +9,7 @@
 <script>
 
 module.exports = {
-  name: 've-image-v2',
+  name: 've-image',
   props: {
     items: { type: Array, default: () => ([]) },
     viewerIsActive: Boolean
