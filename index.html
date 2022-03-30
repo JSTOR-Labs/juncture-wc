@@ -381,7 +381,7 @@
     getContentSource()
     .then(sourceInfo => {
       contentSource = sourceInfo
-      return getSiteConfig()
+      return getSiteConfig(contentSource)
     })
     .then(config => {
       siteConfig = config
@@ -1391,7 +1391,7 @@
     }
 
     // Gets site config
-    async function getSiteConfig() {
+    async function getSiteConfig(contentSource) {
       let config = {}
       let configUrl = ENV === 'DEV'
         ?  contentSource.repo 
