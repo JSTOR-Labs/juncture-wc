@@ -297,6 +297,7 @@
       } else {
         // GHP deploy mode
         if (window.location.hostname.indexOf('github.io') > 0) {
+          console.log(window.location.href.replace(/\.github\.io/,'').split('/'))
           [acct, repo] = window.location.href.replace(/\.github\.io/,'').split('/').slice(2, 4)
           contentSource = {
             acct, repo, ref: qargs.ref || 'main', basePath: `/${repo}`, isGhpSite: true, baseUrl: window.location.origin
