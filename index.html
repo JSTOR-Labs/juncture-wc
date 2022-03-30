@@ -759,7 +759,7 @@
 
             if (markdown) {
               ([this.markdown, this.html, this.params, this.entities] = await this.parseMarkdown(markdown))
-              let essayConfig = this.params.find(param => param[`${this.componentPrefix}config`]) || {}
+              let essayConfig = this.params.find(param => param['ve-config']) || {}
               if (essayConfig.banner) essayConfig.banner = convertURL(essayConfig.banner)
               essayConfig.header = essayConfig.header || 'header'
               essayConfig.main = essayConfig.main || essayConfig.component || 'visual-essay'
@@ -875,7 +875,7 @@
               .map(paramObj => {
                 let viewerTag = Object.keys(paramObj).find(attr => !attr.value && this.availableViewers.indexOf(attr) >= 0)
                 if (viewerTag) paramObj.viewer = viewerTag
-                else if (!Object.keys(paramObj).find(attr => attr.indexOf(this.componentPrefix) === 0)) paramObj[`${this.componentPrefix}entity`] = ''
+                else if (!Object.keys(paramObj).find(attr => attr.indexOf('ve-') === 0)) paramObj['ve-entity'] = ''
                 return paramObj
               })
               .map(paramObj => {
@@ -891,7 +891,7 @@
           findEntities(root, params) {
 
             let entities = Object.fromEntries(
-              params.filter(param => param.eid || param[`${this.componentPrefix}entity`] !== undefined)
+              params.filter(param => param.eid || param['ve-entity'] !== undefined)
               .map(entity => { return {...entity, ...{
                 id: entity.eid || entity.id, 
                 aliases: new Set(entity.aliases ? entity.aliases.split('|') : []),
@@ -1081,7 +1081,7 @@
                 eventActions[action.target].push(action)
               })
             const actions = { ...this.actions }
-            Object.keys(eventActions).forEach(target => actions[`${this.componentPrefix}${target}`] = eventActions[target])
+            Object.keys(eventActions).forEach(target => actions[`ve-${target}`] = eventActions[target])
             this.actions = actions
           }
     
