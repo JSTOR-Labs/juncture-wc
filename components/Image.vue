@@ -9,7 +9,7 @@
 <script>
 
 module.exports = {
-  name: 've-image',
+  name: 've-image-v2',
   props: {
     items: { type: Array, default: () => ([]) },
     viewerIsActive: Boolean
