@@ -875,8 +875,6 @@
               })
               .map(paramObj => {
                 let viewerTag = Object.keys(paramObj)
-                console.log(`viewerTag=${viewerTag}`)
-
                 if (viewerTag) paramObj.viewer = viewerTag.replace(/ve-/, this.componentPrefix)
                 else if (!Object.keys(paramObj).find(attr => attr.indexOf('ve-') === 0)) paramObj['ve-entity'] = ''
                 return paramObj
