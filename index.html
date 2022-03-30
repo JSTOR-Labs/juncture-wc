@@ -419,7 +419,7 @@
       componentsList = clist
       componentsList.forEach(componentUrl => {
         let httpComponent = httpVueLoader(componentUrl)
-        console.log(httpComponent)
+        console.log(httpComponent.name)
         let componentName = `${componentPrefix}${camelToKebab(componentUrl.split('/').pop().split('.')[0])}`
         if (availableViewers.indexOf(componentName) <0) {
           availableViewers.push(componentName)
@@ -875,6 +875,7 @@
               })
               .map(paramObj => {
                 let viewerTag = Object.keys(paramObj)
+                  .find(attr => !attr.value && this.availableViewers.indexOf(attr.replace(/ve-/, this.componentPrefix)) >= 0)
                 if (viewerTag) paramObj.viewer = viewerTag.replace(/ve-/, this.componentPrefix)
                 else if (!Object.keys(paramObj).find(attr => attr.indexOf('ve-') === 0)) paramObj['ve-entity'] = ''
                 return paramObj
@@ -884,7 +885,6 @@
                 return paramObj
               })
             console.log(params)
-
             let entities = await this.getEntityData(this.findEntities(tmp, params))
             return [markdown, essay.innerHTML, params, entities]
           },
