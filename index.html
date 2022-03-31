@@ -884,7 +884,6 @@
                 if (!paramObj.id) paramObj.id = paramObj.eid || `P${++assignedId}`
                 return paramObj
               })
-            console.log(params)
             let entities = await this.getEntityData(this.findEntities(tmp, params))
             return [markdown, essay.innerHTML, params, entities]
           },
@@ -1126,7 +1125,6 @@
 
           items: {
             handler: function (items) {
-              console.log(items)
               let viewers = items
                 .filter(item => item.viewer)
                 .map(item => item.viewer.replace(/ve-/, this.componentPrefix))
