@@ -3,7 +3,7 @@
 
     <ve-image>
       <ul>
-        <li v-for="(item, idx) in viewerItems" :key="idx">{{item.src || item.manifest || item.url}}</li>
+        <li v-for="(manifestUrl, idx) in manifestUrls" :key="idx">{{manifestUrl}}</li>
       </ul>
     </ve-image>
 
@@ -26,6 +26,13 @@ module.exports = {
   computed: {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
+    manifestUrls() {
+      return viewerItems.map(item => {
+        return item.manifest || item.src
+          ? item.manifest || item.src
+          : `/${item.url}`
+      })
+    }
   },
   mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
   methods: {
