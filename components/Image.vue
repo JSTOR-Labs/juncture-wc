@@ -87,7 +87,7 @@ const ccLicenseIcons = {
 }
 
 module.exports = {
-  name: 've1-image',
+  name: 've-image',
   props: {
     items: Array,
     viewerIsActive: Boolean,
