@@ -15,7 +15,7 @@
 <script>
 
 module.exports = {
-  name: 've-image-v2',
+  name: 've1-image-v2',
   props: {
     items: { type: Array, default: () => ([]) },
     viewerIsActive: Boolean
