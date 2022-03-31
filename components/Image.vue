@@ -39,6 +39,11 @@ module.exports = {
     init() {
       console.log(`${this.$options.name}.mounted`, this.items, this.viewerItems)
     }
+  },
+  watch: {
+    manifestUrls (current, previous) {
+      console.log('watch', current, previous)
+    }
   }
 }
 
