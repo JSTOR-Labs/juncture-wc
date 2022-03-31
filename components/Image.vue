@@ -27,7 +27,7 @@ module.exports = {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
     manifestUrls() {
-      return viewerItems.map(item => {
+      return this.viewerItems.map(item => {
         return item.manifest || item.src
           ? item.manifest || item.src
           : `/${item.url}`
