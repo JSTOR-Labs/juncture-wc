@@ -41,8 +41,11 @@ module.exports = {
     }
   },
   watch: {
-    items (current, previous) {
-      console.log('watch.items', current, previous)
+    items (current) {
+      console.log('watch.items', current)
+    },
+    manifestUrls (current) {
+      console.log('watch.manifestUrls', current)
     }
   }
 }
