@@ -25,7 +25,7 @@ Ann Arbor was founded in 1825, named after the wives of the village's founders, 
 In about 1774, the Potawatomi founded two villages in the area of what is now Ann Arbor.
 
 Ann Arbor was founded in 1825 by land speculators John Allen and Elisha Walker Rumsey. On May 25, 1825, the town plat was registered with Wayne County as "Annarbour", the earliest known use of the town's name. Allen and Rumsey decided to name it for their wives, both named Ann, and for the stands of bur oak in the 640 acres (260 ha) of land they purchased for $800 from the federal government at $1.25 per acre. The local Ojibwa named the settlement kaw-goosh-kaw-nick, after the sound of Allen's sawmill.
-<param ve-image-v2 src="wc:Boy_and_book_by_Charles_Porter.jpg">
+<param ve-image src="wc:Boy_and_book_by_Charles_Porter.jpg">
 
 Ann Arbor became the seat of Washtenaw County in 1827, and was incorporated as a village in 1833. The Ann Arbor Land Company, a group of speculators, set aside 40 acres (16 ha) of undeveloped land and offered it to the state of Michigan as the site of the state capitol, but lost the bid to Lansing. In 1837, the property was accepted instead as the site of the University of Michigan, which moved from Detroit.
 
