@@ -3,7 +3,7 @@
 
     <ve-image>
       <ul>
-        <li v-for="(item, idx) in viewerItems" :key="idx">{{item.src}}</li>
+        <li v-for="(item, idx) in viewerItems" :key="idx">{{item.src || item.manifest || item.url}}</li>
       </ul>
     </ve-image>
 
@@ -13,7 +13,7 @@
 <script>
 
 module.exports = {
-  name: 've-image-v2',
+  name: 've-image',
   props: {
     items: { type: Array, default: () => ([]) },
     viewerIsActive: Boolean
