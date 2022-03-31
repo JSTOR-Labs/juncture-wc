@@ -1,7 +1,7 @@
 <template>
   <div :style="containerStyle">
 
-    <ve-image src="wc:Boy_and_book_by_Charles_Porter.jpg">
+    <ve-image>
       <ul>
         <li v-for="(item, idx) in viewerItems" :key="idx">{{item.src}}</li>
       </ul>
