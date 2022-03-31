@@ -13,7 +13,7 @@
 <script>
 
 module.exports = {
-  name: 've-image-v2',
+  name: 've2-image',
   props: {
     items: { type: Array, default: () => ([]) },
     viewerIsActive: Boolean
@@ -25,7 +25,7 @@ module.exports = {
   }),
   computed: {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
-    viewerItems() { return this.items.filter(item => item.viewer === this.$options.name) },
+    viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
   },
   mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
   methods: {
