@@ -1128,7 +1128,7 @@
             handler: function (items) {
               let viewers = items
                 .filter(item => item.viewer)
-                .map(item => item.viewer.replace(item.viewer.replace(/ve-/, this.componentPrefix)))
+                .map(item => item.viewer.replace(/ve-/, this.componentPrefix))
                 .filter(viewer => this.availableViewers.indexOf(viewer) >= 0)
               let enabled = viewers.filter((viewer, index) => viewers.indexOf(viewer) === index)
               if (!arraysEqualIgnoreOrder(enabled, this.viewersEnabled)) this.viewersEnabled = enabled
