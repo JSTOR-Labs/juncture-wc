@@ -28,7 +28,11 @@ module.exports = {
     images() { return this.items.filter(item => item.viewer === 've-compare') },
     mode() { let firstItemWithMode = this.images.find(item => item.compare)
              return firstItemWithMode ? firstItemWithMode.compare : 'curtain'
-    },
+    }
+  },
+  mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
+  methods: {
+    init() { console.log(`${this.$options.name} initialized`) }
   }
 }
 

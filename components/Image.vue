@@ -27,6 +27,10 @@ module.exports = {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) }
+  },
+  mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
+  methods: {
+    init() { console.log(`${this.$options.name} initialized`) }
   }
 }
 
