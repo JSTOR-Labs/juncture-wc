@@ -3,7 +3,7 @@
 
     <ve-image :compare="mode">
       <ul>
-        <li v-for="(image, idx) in images" :key="idx">{{image.manifest}}{{image.options ? ' '+image.options : ''}}</li>
+        <li v-for="(image, idx) in images" :key="idx">{{image.manifest || image.src}}{{image.region ? ' '+image.region : ''}}</li>
       </ul>
     </ve-image>
 
@@ -25,8 +25,7 @@ module.exports = {
   }),
   computed: {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
-    images() { return this.items.filter(item => item.viewer === 've-compare-v2') },
-    images() { return this.viewerItems },
+    images() { return this.items.filter(item => item.viewer === 've-compare') },
     mode() { let firstItemWithMode = this.images.find(item => item.compare)
              return firstItemWithMode ? firstItemWithMode.compare : 'curtain'
     },

@@ -19,8 +19,8 @@ Ann Arbor is home to the University of Michigan. The university significantly sh
 <param ve-entity eid="Q230492">
 
 Ann Arbor was founded in 1825, named after the wives of the village's founders, both named Ann, and the stands of bur oak trees. The University of Michigan moved from Detroit to Ann Arbor in 1837, and the city grew at a rapid rate in the early to mid-20th century.
-<param ve-compare-v2 manifest="https://iiif.juncture-digital.org/manifest/b4b41f7a371c9aa82a017610fac60888e285fda1f8e14a1de83ab76d12bada15">
-<param ve-compare-v2 manifest="https://iiif.juncture-digital.org/manifest/73c6f88e177ea073a7d9db0d08fd75837ab15538fdb152e25ebdebb328f85c5a" options="pct:30,30,50,60">
+<param ve-compare manifest="https://iiif.juncture-digital.org/manifest/b4b41f7a371c9aa82a017610fac60888e285fda1f8e14a1de83ab76d12bada15">
+<param ve-compare manifest="https://iiif.juncture-digital.org/manifest/73c6f88e177ea073a7d9db0d08fd75837ab15538fdb152e25ebdebb328f85c5a" region="pct:30,30,50,60">
 
 ## History
 
