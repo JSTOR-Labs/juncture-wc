@@ -20,7 +20,7 @@ module.exports = {
   },
   data: () => ({
     viewerLabel: 'Image Viewer',
-    viewerIcon: 'fas fa-file-image',
+    viewerIcon: 'far fa-file-image',
     dependencies: []
   }),
   computed: {
