@@ -31,7 +31,7 @@ module.exports = {
     user() { return this.contentSource.acct },
     path() { 
       let pathElems = this.contentSource.basePath.split('/').filter(elem => elem)
-      return pathElems.slice(this.contentSource.isGhpSite ? 1 : 0).join('/')
+      return pathElems.slice(this.contentSource.isGhpSite ? 2 : 1).join('/')
     }
   },
   mounted() {
