@@ -39,7 +39,7 @@ module.exports = {
   },
   mounted() {
     console.log('contentSource', this.contentSource)
-    console.log(`user=${this.user} basePath=${this.basePath} path=${path}`)
+    console.log(`user=${this.user} basePath=${this.basePath} path=${this.path}`)
     this.loadDependencies(this.dependencies, 0, this.init)
   },
   methods: {
