@@ -28,7 +28,10 @@ module.exports = {
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) }
   },
-  mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
+  mounted() {
+    console.log(this.contentSource)
+    this.loadDependencies(this.dependencies, 0, this.init)
+  },
   methods: {
     init() { console.log(`${this.$options.name} initialized`) }
   }
