@@ -17,6 +17,7 @@ module.exports = {
   props: {
     items: { type: Array, default: () => ([]) },
     contentSource:  { type: Object, default: () => ({}) },
+    mdDir:  String,
     viewerIsActive: Boolean
   },
   data: () => ({
@@ -29,15 +30,16 @@ module.exports = {
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) },
     user() { return this.contentSource.acct },
-    path() { 
+    basePath() { 
       let pathElems = this.contentSource.basePath.split('/').filter(elem => elem)
       console.log(pathElems)
       return pathElems.slice(this.contentSource.isGhpSite ? 2 : 1).join('/')
-    }
+    },
+    path() { return `${basePath}${mdDir}` }
   },
   mounted() {
     console.log('contentSource', this.contentSource)
-    console.log(`user=${this.user} path=${this.path}`)
+    console.log(`user=${this.user} basePath=${this.basePath} path=${path}`)
     this.loadDependencies(this.dependencies, 0, this.init)
   },
   methods: {
