@@ -29,7 +29,7 @@ module.exports = {
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) }
   },
   mounted() {
-    console.log(this.contentSource)
+    console.log('contentSource', contentSource)
     this.loadDependencies(this.dependencies, 0, this.init)
   },
   methods: {
