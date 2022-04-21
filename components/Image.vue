@@ -31,6 +31,7 @@ module.exports = {
     user() { return this.contentSource.acct },
     path() { 
       let pathElems = this.contentSource.basePath.split('/').filter(elem => elem)
+      console.log(pathElems)
       return pathElems.slice(this.contentSource.isGhpSite ? 2 : 1).join('/')
     }
   },
