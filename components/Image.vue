@@ -1,7 +1,7 @@
 <template>
   <div :style="containerStyle">
 
-    <ve-image>
+    <ve-image :user="user" :path="path">
       <ul>
         <li v-for="(manifestUrl, idx) in manifestUrls" :key="idx">{{manifestUrl}}</li>
       </ul>
@@ -16,6 +16,7 @@ module.exports = {
   name: 've2-image',
   props: {
     items: { type: Array, default: () => ([]) },
+    contentSource:  { type: Object, default: () => ({}) },
     viewerIsActive: Boolean
   },
   data: () => ({
@@ -26,10 +27,16 @@ module.exports = {
   computed: {
     containerStyle() { return { height: this.viewerIsActive ? '100%' : '0' } },
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
-    manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) }
+    manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) },
+    user() { return this.contentSource.acct },
+    path() { 
+      let pathElems = this.contentSource.basePath.split('/')
+      return pathElems.slice(this.contentSource.isGhpSite ? 1 : 0).join('/')
+    }
   },
   mounted() {
-    console.log('contentSource', contentSource)
+    console.log('contentSource', this.contentSource)
+    console.log(`user=${this.user} path=${this.path}`)
     this.loadDependencies(this.dependencies, 0, this.init)
   },
   methods: {
