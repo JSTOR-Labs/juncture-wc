@@ -194,7 +194,16 @@
     
     const ENV = window.location.port || window.location.host.indexOf('githubpreview.dev') > 0 ? 'DEV' : 'PROD'
     
-    let isJuncture = window.location.hostname.indexOf('juncture-digital.org') === 0 || ENV === 'DEV'
+    //const junctureHostname = 'juncture-digital.org'
+    //const junctureAcct = 'jstor-labs'
+    //const junctureRepo = 'juncture-digital'
+
+    const junctureHostname = 'jstor-labs.github.io'
+    const junctureAcct = 'jstor-labs'
+    const junctureRepo = 'juncture-wc'
+    console.log(`junctureHostname=${junctureHostname} junctureAcct=${junctureAcct} junctureRepo=${junctureRepo}`)
+
+    let isJuncture = window.location.hostname.indexOf(junctureHostname) === 0 || ENV === 'DEV'
     const junctureVersion = 'main'
     let junctureVersionHash
     let qargs = window.location.href.indexOf('?') > 0 ? parseQueryString(window.location.href.split('?')[1]) : {}
@@ -257,19 +266,29 @@
     async function getContentSource() {
       let contentSource
 
-      if (window.location.host.indexOf('juncture-digital.org') >= 0) {
+      if (window.location.host.indexOf(junctureHostname) >= 0) {
+        let isGhpSite = junctureHostname.indexOf('github.io') > 0
         contentSource = {
-          acct: 'jstor-labs', repo: 'juncture-digital', ref: 'main', hash: null, basePath: '', isGhpSite: false,
+          acct: junctureAcct, repo: junctureRepo, ref: 'main', hash: null, basePath: isGhpSite ? `/${junctureRepo}` : '', isGhpSite,
+          //baseUrl: `${window.location.origin}${isGhpSite ? '/'+junctureRepo : ''}`, 
+          //assetsBaseUrl: `${window.location.origin}${isGhpSite ? '/'+junctureRepo : ''}`
           baseUrl: window.location.origin, 
-          assetsBaseUrl: `${window.location.origin}`
+          assetsBaseUrl: window.location.origin
         }
+        console.log('contentSource', contentSource)
         let pathElems = window.location.pathname.split('/').filter(elem => elem !== '')
         if (pathElems.length >= 2) {
-          let ghRepoInfo = await githubRepoInfo(pathElems[0], pathElems[1])
+          let ghRepoInfo = await githubRepoInfo(pathElems[isGhpSite ? 1 : 0], pathElems[isGhpSite ? 2 : 1])
+          console.log('ghRepoInfo', ghRepoInfo)
           if (ghRepoInfo) {
-            contentSource = {...contentSource, ...ghRepoInfo, 
-              ...{basePath: `/${ghRepoInfo.acct}/${ghRepoInfo.repo}`, assetsBaseUrl: `https://raw.githubusercontent.com/${ghRepoInfo.acct}/${ghRepoInfo.repo}/${ghRepoInfo.ref}`}}
+            contentSource = {
+              ...contentSource, 
+              ...ghRepoInfo, 
+              ...{basePath: `${contentSource.basePath}/${ghRepoInfo.acct}/${ghRepoInfo.repo}`, 
+                  assetsBaseUrl: `https://raw.githubusercontent.com/${ghRepoInfo.acct}/${ghRepoInfo.repo}/${ghRepoInfo.ref}`}
+            }
           }
+          console.log('contentSource', contentSource)
         }
 
       } else if (ENV === 'DEV') {
@@ -395,7 +414,7 @@
       if (gaPropertyID) ga('create', gaPropertyID, 'auto')
       if (siteConfig.description) setMetaDescription(siteConfig.description)
       let attrsWithUrls = ['banner', 'favicon', 'logo']
-      if (ENV === 'DEV' && (contentSource.acct === 'jstor-labs' && contentSource.repo === 'juncture-digital') ) {
+      if (ENV === 'DEV' && (contentSource.acct === junctureAcct && contentSource.repo === junctureRepo) ) {
         attrsWithUrls.forEach(attr => { if (config[attr]) config[attr] = convertURL(config[attr]) })
       } else if (contentSource.repo) {
         headRef(contentSource.acct, contentSource.repo, contentSource.ref).then(headHash => {
@@ -609,23 +628,10 @@
               this.markdownViewer.show()
             } else if (action === 'user-guide') {
               window.open('https://github.com/JSTOR-Labs/juncture/wiki', '_blank')
-            } else if (action === 'edit-page') {
-              this.editMarkdown()
-            } else if (action === 'add-page') {
-              this.reposForAcct = await this.listRepositories()
-              this.selectedRepo = this.reposForAcct.length > 0 ? this.reposForAcct[0].name : null
-              this.showForm('add-page-form')
-            } else if (action === 'create-site') {
-              this.showForm('create-site-form')
-            } else if (action === 'software-update') {
-              let releases = await getGHReleases()
-              this.selectedRelease = releases[0]
-              this.releases = releases
-              this.showForm('update-site-form')
             } else if (action === 'goto-github') {
               window.open(`https://github.com/${contentSource.acct}/${contentSource.repo}/tree/${contentSource.ref}`, '_blank')
             } else if (action === 'viewSiteOnJuncture') {
-              window.location.href = `https://juncture-digital.org/${contentSource.acct}/${contentSource.repo}`
+              window.location.href = `https://${junctureHostname}/${contentSource.acct}/${contentSource.repo}`
             } else if (action === 'authenticate') {
               this.authenticate()
             } else if (action === 'logout') {
@@ -663,7 +669,7 @@
           
           loadNewSite() {
             this.hideForm()
-            window.open(`https://juncture-digital.org/${this.authenticatedUser.acct}/${this.newRepo}`, '_blank')
+            window.open(`https://${junctureHostname}/${this.authenticatedUser.acct}/${this.newRepo}`, '_blank')
           },
 
           gotoAddedPage() {
@@ -1401,8 +1407,8 @@
         ?  contentSource.repo 
           ? `${contentSource.assetsBaseUrl}/config.yaml`
           : `${window.location.origin}/config.yaml`
-        : window.location.host.indexOf('juncture-digital.org') >= 0
-          ? `https://juncture-digital.org/config.yaml`
+        : window.location.host.indexOf(junctureHostname) >= 0
+          ? `https://${junctureHostname}/config.yaml`
           : `${window.location.origin}${contentSource.basePath}/config.yaml`
       let resp = await fetch(configUrl)
       if (resp.ok) config = YAML.parse(await resp.text())
@@ -1412,7 +1418,7 @@
         : atob('Z2hwX05lcnV2RUYzRmx6M3o5YnFjQWZuOGpJQnJMR3lEMTNmYjYyVw==')
 
       let ghToken = oauthAccessToken || ghUnscopedToken
-      if (ENV === 'PROD' && window.location.host.indexOf('juncture-digital.org') >= 0) {
+      if (ENV === 'PROD' && window.location.host.indexOf(junctureHostname) >= 0) {
         resp = await fetch(`https://api.github.com/repos/${config.acct || contentSource.acct}/${config.repo || contentSource.repo}/contents/config.yaml?ref=${config.ref || contentSource.ref}`, ghToken ? {headers: {Authorization:`Token ${ghToken}`}} : {})
         if (resp.ok) {
           resp = await resp.json()
@@ -1428,21 +1434,6 @@
       return config
     }
 
-    async function getGHTags() {
-      let ghToken = oauthAccessToken || ghUnscopedToken
-      let resp = await fetch('https://api.github.com/repos/jstor-labs/juncture/tags',
-                               ghToken ? {headers: {Authorization:`Token ${ghToken}`}} : {})
-      resp = await resp.json()
-      return resp.map(tag => tag.name)
-    }
-
-    async function getGHReleases() {
-      let ghToken = oauthAccessToken || ghUnscopedToken
-      let resp = await fetch('https://api.github.com/repos/jstor-labs/juncture/releases',
-                               ghToken ? {headers: {Authorization:`Token ${ghToken}`}} : {})
-      return await resp.json()
-    }
-
     // Determines if Github repo exists
     async function githubRepoInfo(acct, repo) {
       let ghInfo
@@ -1452,7 +1443,10 @@
         if (resp.ok) {
           resp = await resp.json()
           ghInfo = {acct, repo, branch: resp.default_branch, ref: qargs.ref || resp.default_branch}
+        } else {
+          console.log(resp.status)
         }
+      console.log(`githubRepoInfo: acct=${acct} $repo=${repo}`, ghInfo)
       return ghInfo
 
     }
@@ -1498,7 +1492,7 @@
     }
 
     // Gets a list of available components
-    async function getComponentsList(componentsRoot, acct, repo) {
+    async function getComponentsList() {
       let componentsList = []
 
       let ref = contentSource.acct === 'jstor-labs' && contentSource.repo === 'juncture' ? junctureVersionHash : contentSource.ref
@@ -1508,6 +1502,7 @@
       }
       
       if (contentSource.repo && (contentSource.repo !== 'juncture' || contentSource.acct !== 'jstor-labs')) {
+        let componentsBaseDir = 
         componentsList = [
           ...componentsList, 
           ...Object.values(await dir('/components', contentSource))
@@ -1516,9 +1511,10 @@
 
       componentsList = [
         ...componentsList,
+        ...Object.values(await dir('/components', {acct: junctureAcct, repo: junctureRepo, hash: 'main'})),
         ...Object.values(await dir('/components', {acct: 'jstor-labs', repo: 'juncture', hash: junctureVersionHash}))
       ]
-      
+
       return componentsList
     }
   
@@ -1594,7 +1590,7 @@
     }
 
     async function sendmail(options) {
-      let resp = await fetch('https://sendmail.juncture-digital.org/', {
+      let resp = await fetch(`https://sendmail.${junctureHostname}/`, {
         method: 'POST', body: JSON.stringify(options),
         headers: {'Content-Type': 'application/json', Accept: 'application/json'},
       })
