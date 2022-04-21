@@ -35,7 +35,7 @@ module.exports = {
       console.log(pathElems)
       return pathElems.slice(this.contentSource.isGhpSite ? 2 : 1).join('/')
     },
-    path() { return `${basePath}${mdDir}` }
+    path() { return `${this.basePath}${this.mdDir}` }
   },
   mounted() {
     console.log('contentSource', this.contentSource)
