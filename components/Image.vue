@@ -30,7 +30,7 @@ module.exports = {
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) },
     user() { return this.contentSource.acct },
     path() { 
-      let pathElems = this.contentSource.basePath.split('/')
+      let pathElems = this.contentSource.basePath.split('/').filter(elem => elem)
       return pathElems.slice(this.contentSource.isGhpSite ? 1 : 0).join('/')
     }
   },
