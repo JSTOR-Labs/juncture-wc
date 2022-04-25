@@ -33,7 +33,7 @@ module.exports = {
     basePath() { return this.contentSource.basePath.split('/').filter(elem => elem).slice(this.contentSource.isGhpSite ? 2 : 1).join('/') },
     path() { return `${this.basePath}${this.mdDir}` }
   },
-  mounted() { this.loadDependencies(this.dependencies) }
+  mounted() { this.loadDependencies(this.dependencies, 0, this.init) }
 }
 
 </script>
