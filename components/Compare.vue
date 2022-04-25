@@ -30,10 +30,7 @@ module.exports = {
              return firstItemWithMode ? firstItemWithMode.compare : 'curtain'
     }
   },
-  mounted() { this.loadDependencies(this.dependencies, 0, this.init) },
-  methods: {
-    init() { console.log(`${this.$options.name} initialized`) }
-  }
+  mounted() { this.loadDependencies(this.dependencies, 0, this.init) }
 }
 
 </script>

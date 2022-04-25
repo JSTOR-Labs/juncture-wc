@@ -30,21 +30,10 @@ module.exports = {
     viewerItems() { return this.items.filter(item => item.viewer === 've-image') },
     manifestUrls() { return this.viewerItems.map(item => item.manifest || item.src ? item.manifest || item.src : `/${item.url}`) },
     user() { return this.contentSource.acct },
-    basePath() { 
-      let pathElems = this.contentSource.basePath.split('/').filter(elem => elem)
-      console.log(pathElems)
-      return pathElems.slice(this.contentSource.isGhpSite ? 2 : 1).join('/')
-    },
+    basePath() { return this.contentSource.basePath.split('/').filter(elem => elem).slice(this.contentSource.isGhpSite ? 2 : 1).join('/') },
     path() { return `${this.basePath}${this.mdDir}` }
   },
-  mounted() {
-    console.log('contentSource', this.contentSource)
-    console.log(`user=${this.user} basePath=${this.basePath} path=${this.path}`)
-    this.loadDependencies(this.dependencies, 0, this.init)
-  },
-  methods: {
-    init() { console.log(`${this.$options.name} initialized`) }
-  }
+  mounted() { this.loadDependencies(this.dependencies, 0, this.init) }
 }
 
 </script>
