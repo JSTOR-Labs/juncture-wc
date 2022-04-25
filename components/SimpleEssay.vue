@@ -30,7 +30,7 @@ module.exports = {
   watch: {
     markdown: {
       handler: function (markdown) {
-        fetch(`https://api.visual-essays.net/html/?base=path`,{
+        fetch(`https://api.visual-essays.net/html/?base=${this.path}`,{
           method:'POST',
           body: markdown
         })
