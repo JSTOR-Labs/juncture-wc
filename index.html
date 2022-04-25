@@ -794,7 +794,7 @@
                 while (prior && prior.tagName !== 'P' && prior.tagName[0] !== 'H') {
                   prior = prior.previousElementSibling
                 }
-                return { ...{ path: getDomPath(prior || tmp).filter(elem => elem !== 'html' && elem !== 'body').join('>') }, ...attrsToObject(paramEl) }
+                return { ...{ path: getDomPath(prior || tmpMdElem).filter(elem => elem !== 'html' && elem !== 'body').join('>') }, ...attrsToObject(paramEl) }
               })
               .map(paramObj => {
                 let viewerTag = Object.keys(paramObj)
@@ -807,7 +807,6 @@
 
           // Convert essay Markdown into HTML.  Markdown headings are used to infer content heirarchy
           async parseMarkdown(tmpMdElem) {
-            // let tmp = new DOMParser().parseFromString(md.render(markdown), 'text/html').children[0].children[1]
             this.convertResourceUrls(tmpMdElem)
       
             let essay = document.createElement('div')
