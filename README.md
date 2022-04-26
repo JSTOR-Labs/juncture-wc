@@ -1,39 +1,147 @@
-<a href="https://juncture-digital.org"><img src="https://juncture-digital.org/images/ve-button.png"></a>
+<param ve-config component="default" class="home" layout="test1" fixed-header="true" logo="https://raw.githubusercontent.com/jstor-labs/juncture-digital/main/images/juncture-logo-jl.svg" logins-disabled="false" force-hamburger>
+<param nav label="Contact Us" action="contact-us" icon="fas fa-envelope">
 
-<param ve-config
-       title="Hello, Juncture"
-       author="Ron Snyder"
-       banner="https://upload.wikimedia.org/wikipedia/commons/9/91/Ann_Arbor_Skyline_2021.jpg"
-       layout="vertical">
+# 
+<param class="heading">
 
-<param ve-entity eid="Q485172">
+![background image](/images/hero-juncture.png)
+<param class="background-image">
 
-<param ve-image url="https://upload.wikimedia.org/wikipedia/commons/1/1e/Ann_Arbor_sunset_2018.jpg">
+Create and share interactive essays using free and open web resources
 
-# Ann Arbor
+[Get started](#get-started)
+<param class="button">
 
-Ann Arbor is a city in the U.S. state of Michigan and the county seat of Washtenaw County. The 2020 census recorded its population to be 123,851, making it the fifth-largest city in Michigan. It is the principal city of the Ann Arbor Metropolitan Statistical Area, which encompasses all of Washtenaw County. Ann Arbor is also included in the larger Greater Detroit Combined Statistical Area.
-<param ve-map center="Q485172" zoom="11" prefer-geojson>
+#
+<param id="about" class="cards">
 
-Ann Arbor is home to the University of Michigan. The university significantly shapes Ann Arbor's economy as it employs about 30,000 workers, including about 12,000 in the medical center. The city's economy is also centered on high technology, with several companies drawn to the area by the university's research and development infrastructure.
-<param ve-entity eid="Q230492">
+##
+<video width="100%" height="100%" controls playsinline poster="https://raw.githubusercontent.com/jstor-labs/juncture-digital/main/images/video-thumbnail.png">
+  <source src="https://raw.githubusercontent.com/jstor-labs/juncture-digital/main/videos/Juncture-final.mp4" type="video/mp4">
+</video>
 
-Ann Arbor was founded in 1825, named after the wives of the village's founders, both named Ann, and the stands of bur oak trees. The University of Michigan moved from Detroit to Ann Arbor in 1837, and the city grew at a rapid rate in the early to mid-20th century.
-<param ve-compare manifest="https://iiif.juncture-digital.org/manifest/b4b41f7a371c9aa82a017610fac60888e285fda1f8e14a1de83ab76d12bada15">
-<param ve-compare manifest="https://iiif.juncture-digital.org/manifest/73c6f88e177ea073a7d9db0d08fd75837ab15538fdb152e25ebdebb328f85c5a" region="pct:30,30,50,60">
+## About
+Juncture is a free-to-use, open source framework for converting simple text files into an engaging visual essay. A visual essay is an interactive and responsive web page that augments a text narrative with visual elements to provide depth and context.
+<br/><br/>
+With Juncture you can create a single essay or build a full website consisting of multiple visual essays with navigation, site info pages, contact form, logo, and other simple customizations.
 
-## History
+# Juncture is...
+<param id="why-use-juncture" class="cards">
 
-In about 1774, the Potawatomi founded two villages in the area of what is now Ann Arbor.
+## Free, open and minimal
 
-Ann Arbor was founded in 1825 by land speculators John Allen and Elisha Walker Rumsey. On May 25, 1825, the town plat was registered with Wayne County as "Annarbour", the earliest known use of the town's name. Allen and Rumsey decided to name it for their wives, both named Ann, and for the stands of bur oak in the 640 acres (260 ha) of land they purchased for $800 from the federal government at $1.25 per acre. The local Ojibwa named the settlement kaw-goosh-kaw-nick, after the sound of Allen's sawmill.
-<param ve-image src="wc:Boy_and_book_by_Charles_Porter.jpg">
+![free-open-source](/images/free-open-source.png)
 
-Ann Arbor became the seat of Washtenaw County in 1827, and was incorporated as a village in 1833. The Ann Arbor Land Company, a group of speculators, set aside 40 acres (16 ha) of undeveloped land and offered it to the state of Michigan as the site of the state capitol, but lost the bid to Lansing. In 1837, the property was accepted instead as the site of the University of Michigan, which moved from Detroit.
+Juncture is open source and free to use and to modify.  Adhering to minimal computing principles, Juncture uses static files and open technologies to create memorable essays.
 
-Since the university's establishment in the city in 1837, the histories of the University of Michigan and Ann Arbor have been closely linked. The town became a regional transportation hub in 1839 with the arrival of the Michigan Central Railroad, and a north–south railway connecting Ann Arbor to Toledo and other markets to the south was established in 1878. Throughout the 1840s and the 1850s settlers continued to come to Ann Arbor. While the earlier settlers were primarily of British ancestry, the newer settlers also consisted of Germans, Irish, and blacks. In 1851, Ann Arbor was chartered as a city, though the city showed a drop in population during the Depression of 1873. It was not until the early 1880s that Ann Arbor again saw robust growth, with new emigrants from Greece, Italy, Russia, and Poland. Ann Arbor saw increased growth in manufacturing, particularly in milling. Ann Arbor's Jewish community also grew after the turn of the 20th century, and its first and oldest synagogue, Beth Israel Congregation, was established in 1916.
+## Interactive, image-rich and interdisciplinary
 
-## Climate
+![interactive, image-rich and interdisciplinary](/images/digital-humanities.png)
 
-Ann Arbor has a typically Midwestern humid continental climate (Köppen Dfa), which is influenced by the Great Lakes. There are four distinct seasons: winters are cold and snowy, with average highs around 34 °F (1 °C). Summers are warm to hot and humid, with average highs around 81 °F (27 °C) and with slightly more precipitation. Spring and autumn are transitional between the two. The area experiences lake effect weather, primarily in the form of increased cloudiness during late fall and early winter. The monthly daily average temperature in July is 72.6 °F (22.6 °C), while the same figure for January is 24.5 °F (−4.2 °C). Temperatures reach or exceed 90 °F (32 °C) on 10 days, and drop to or below 0 °F (−18 °C) on 4.6 nights. Precipitation tends to be the heaviest during the summer months, but most frequent during winter. <span data-click-image-zoomto="1033,443,353,466">Snowfall</span>, which normally occurs from November to April but occasionally starts in October, averages 58 inches (147 cm) per season. The lowest recorded temperature was −23 °F (−31 °C) on February 11, 1885 and the highest recorded temperature was 105 °F (41 °C) on July 24, 1934.
-<param ve-image url="https://upload.wikimedia.org/wikipedia/commons/3/39/Third_Street%2C_Ann_Arbor%2C_MI%2C_January_6%2C_2014.JPG">
+Designed for narratives exploring complex and nuanced subjects, Juncture essays are linked open data aware texts augmented with engaging and interactive components, including annotated high-resolution images, network visualizations, interactive maps and other elements.
+
+## A great way to build digital skills
+
+![a great way to build digital skills](/images/digital-skills.png)
+
+Because it uses free and open technologies like [Wikidata](https://www.wikidata.org), [Markdown](https://www.markdownguide.org/), [IIIF](https://iiif.io), [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), [D3](https://d3js.org/), [Timeline.js](https://timeline.knightlab.com/) and more, Juncture is a great way to level-up your digital skills.  All you need is a [Github](https://github.com) account and a willingness to learn.
+
+# What do you need to start using Juncture?
+<param id="prerequisites" class="cards">
+
+##
+
+![visual storytelling](/images/visual-storytelling.png)
+
+**An interest in visual storytelling** - Juncture lowers the barriers to building interactive essays that augment text with rich and engaging visualizations.
+
+##
+
+![visual essay in 10 minutes](/images/ten-minutes.png)
+
+**10 minutes to create your first visual essay** - Roll up your sleeves and see for yourself how quick and easy it is to create and share an interactive visual essay.
+
+##
+
+![github account](/images/free-github.png)
+
+**A (free) Github account** - Juncture uses [Github](https://github.com/jstor-labs/juncture/wiki/Github-overview), a free-to-use file hosting service and much more, to store visual essays.
+
+# Building an interactive essay is easier than you think
+<param id="get-started" class="cards">
+
+## Create a visual essay
+
+![create a visual essay](/images/create-essay.png)
+
+The first step in getting acquainted with Juncture is to create a simple visual essay in your personal Github account. Write an essay about a topic you like and follow this [visual essay quick start guide](https://github.com/jstor-labs/juncture/wiki/Visual-Essay-Quick-Start) to visualize your essay. It will take about 10 minutes to prepare the interactive essay.
+
+## View and Share your visual essays
+
+![view and share visual essay](/images/view-share.png)
+
+Each visual essay has a default web address that can be used for viewing and sharing the essay.  Other URLs, including your own custom domain name can be used if you create a Juncture site. This [viewing and sharing visual essays guide](https://github.com/jstor-labs/juncture/wiki/Viewing-and-Sharing-Visual-Essays) provides simple instructions for accessing and sharing your visual essays.
+
+## Create a Juncture site
+
+![create a juncture site](/images/juncture-site.png)
+
+Juncture can be used to create a full-featured website that includes multiple visual essays and other content pages. This [creating a juncture site quick start guide](https://github.com/jstor-labs/juncture/wiki/Juncture-Site-Quick-Start) provides step-by-step instructions for creating and configuring a new Juncture site.  Instructions are also provided for adding and modifying content.
+
+<!--
+# Public or personal uses
+<param id="juncture-can" class="cards juncture-can">
+
+## Create a public site
+
+![](/images/public-site.png)
+
+Your Juncture site will run out of Github, where it is easy to connect it to a registered domain name, making it easier to share with the world.
+
+## Keep your site just for you, your friends or your class
+
+![](/images/classroom-purposes.png)
+
+Since it runs out of Github, your Juncture site can be kept private, used for your own purposes or as part of a project-based learning exercise.
+-->
+
+# Showcase
+<param id="showcase" class="cards carousel">
+
+## Plant Humanities Lab
+
+![plant humanities lab](/images/phl-screenshot.png)
+
+Explore the cultural histories of plants and their influence on human societies.  The flagship use of Juncture, Plant Humanities Lab was developed as a Dumbarton Oaks and JSTOR Labs collaboration.
+
+[Visit Site](https://lab.plant-humanities.org)
+<param class="button">
+
+## Kent Digital Maps
+
+![kent digital maps](/images/kent-screenshot.png)
+
+Explore themed essays about Kent, a county in South East England. Kent has a rich history and provided inspiration for a number of writers and artists including Charles Dickens.
+
+[Visit Site](https://kent-maps.online)
+<param class="button">
+
+# Documentation
+<param class="center">
+
+##
+
+The team behind Juncture has created ample documentation and sample files to help you create new essays and sites.  Have a question or a suggestion?  Tell us how we can make Juncture better at [labs@ithaka.org](mailto:labs@ithaka.org).
+
+[View Documentation](https://github.com/jstor-labs/juncture/wiki)
+<param class="button">
+
+[Examples](https://juncture-digital.org/examples)
+<param class="button">
+
+#
+<param class="footer">
+
+- Brought to you by: [![JSTOR labs](/images/Labs_logo_knockout.svg "JSTOR Labs")](https://labs.jstor.org)
+- [About](about)
+- [Terms and conditions](terms-and-conditions)
